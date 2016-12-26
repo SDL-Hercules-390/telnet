@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>telnet</ProjectName>
+    <ProjectGuid>{2545281D-4C4D-4daa-9EE9-E2C37CE6C4A2}</ProjectGuid>
+    <RootNamespace>telnet</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>14.0.25431.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\$(ProjectName)\</OutDir>
+    <IntDir>..\$(ProjectName)\</IntDir>
+    <NMakeBuildCommandLine>cd ..\$(ProjectName)
+"$(ProjectDir)build.cmd" --install --arch 32 --config Debug --pkgname .
+</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd ..\$(ProjectName)
+"$(ProjectDir)build.cmd" --rebuild --install --arch 32 --config Debug --pkgname .</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>cd ..\$(ProjectName)
+"$(ProjectDir)build.cmd" --uninstall --arch 32 --config Debug --pkgname .</NMakeCleanCommandLine>
+    <NMakeOutput>$(OutDir)</NMakeOutput>
+    <NMakePreprocessorDefinitions>WIN32;_DEBUG;DEBUG;_MSVC_;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>$(ProjectDir)source\include;$(ProjectDir);$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\$(ProjectName)\</OutDir>
+    <IntDir>..\$(ProjectName)\</IntDir>
+    <NMakeBuildCommandLine>cd ..\$(ProjectName)
+"$(ProjectDir)build.cmd" --install --arch 64 --config Debug --pkgname .
+</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd ..\$(ProjectName)
+"$(ProjectDir)build.cmd" --rebuild --install --arch 64 --config Debug --pkgname .</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>cd ..\$(ProjectName)
+"$(ProjectDir)build.cmd" --uninstall --arch 64 --config Debug --pkgname .</NMakeCleanCommandLine>
+    <NMakeOutput>$(OutDir)</NMakeOutput>
+    <NMakePreprocessorDefinitions>WIN32;_DEBUG;DEBUG;_MSVC_;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>$(ProjectDir)source\include;$(ProjectDir);$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\$(ProjectName)\</OutDir>
+    <IntDir>..\$(ProjectName)\</IntDir>
+    <NMakeBuildCommandLine>cd ..\$(ProjectName)
+"$(ProjectDir)build.cmd" --install --arch 32 --config Release --pkgname .
+</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd ..\$(ProjectName)
+"$(ProjectDir)build.cmd" --rebuild --install --arch 32 --config Release --pkgname .</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>cd ..\$(ProjectName)
+"$(ProjectDir)build.cmd" --uninstall --arch 32 --config Release --pkgname .</NMakeCleanCommandLine>
+    <NMakeOutput>$(OutDir)</NMakeOutput>
+    <NMakePreprocessorDefinitions>WIN32;NDEBUG;_MSVC_;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>$(ProjectDir)source\include;$(ProjectDir);$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\$(ProjectName)\</OutDir>
+    <IntDir>..\$(ProjectName)\</IntDir>
+    <NMakeBuildCommandLine>cd ..\$(ProjectName)
+"$(ProjectDir)build.cmd" --install --arch 64 --config Release --pkgname .
+</NMakeBuildCommandLine>
+    <NMakeReBuildCommandLine>cd ..\$(ProjectName)
+"$(ProjectDir)build.cmd" --rebuild --install --arch 64 --config Release --pkgname .</NMakeReBuildCommandLine>
+    <NMakeCleanCommandLine>cd ..\$(ProjectName)
+"$(ProjectDir)build.cmd" --uninstall --arch 64 --config Release --pkgname .</NMakeCleanCommandLine>
+    <NMakeOutput>$(OutDir)</NMakeOutput>
+    <NMakePreprocessorDefinitions>WIN32;NDEBUG;_MSVC_;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>$(ProjectDir)source\include;$(ProjectDir);$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <BuildLog>
+      <Path>..\$(ProjectName)\BuildLog-$(Platform)-$(Configuration).txt</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <BuildLog>
+      <Path>..\$(ProjectName)\BuildLog-$(Platform)-$(Configuration).txt</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <BuildLog>
+      <Path>..\$(ProjectName)\BuildLog-$(Platform)-$(Configuration).txt</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <BuildLog>
+      <Path>..\$(ProjectName)\BuildLog-$(Platform)-$(Configuration).txt</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="examples\example1.c" />
+    <ClCompile Include="examples\example2.c" />
+    <ClCompile Include="examples\example3.c" />
+    <ClCompile Include="examples\example4.c" />
+    <ClCompile Include="examples\example5.c" />
+    <ClCompile Include="examples\example6.c" />
+    <ClCompile Include="examples\example7.c" />
+    <ClCompile Include="examples\example8.c" />
+    <ClCompile Include="source\decContext.c" />
+    <ClCompile Include="source\decDouble.c" />
+    <ClCompile Include="source\decimal128.c" />
+    <ClCompile Include="source\decimal32.c" />
+    <ClCompile Include="source\decimal64.c" />
+    <ClCompile Include="source\decNumber.c" />
+    <ClCompile Include="source\decPacked.c" />
+    <ClCompile Include="source\decQuad.c" />
+    <ClCompile Include="source\decSingle.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\decBasic.h" />
+    <ClInclude Include="include\decCommon.h" />
+    <ClInclude Include="include\decContext.h" />
+    <ClInclude Include="include\decDouble.h" />
+    <ClInclude Include="include\decDPD.h" />
+    <ClInclude Include="include\decimal128.h" />
+    <ClInclude Include="include\decimal32.h" />
+    <ClInclude Include="include\decimal64.h" />
+    <ClInclude Include="include\decNumber.h" />
+    <ClInclude Include="include\decNumberLocal.h" />
+    <ClInclude Include="include\decPacked.h" />
+    <ClInclude Include="include\decQuad.h" />
+    <ClInclude Include="include\decSingle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitattributes" />
+    <None Include="build" />
+    <None Include="build.cmd" />
+    <None Include="BUILDING" />
+    <None Include="cmake\modules\CapitalizeWord.cmake" />
+    <None Include="cmake\modules\CheckHeader.cmake" />
+    <None Include="cmake\modules\ConfigHandler.cmake" />
+    <None Include="cmake\modules\GIT_Revision.cmake" />
+    <None Include="cmake\modules\HG_Revision.cmake" />
+    <None Include="cmake\modules\ParseBinaryDir.cmake" />
+    <None Include="cmake\modules\ParseOption.cmake" />
+    <None Include="cmake\modules\Trace.cmake" />
+    <None Include="cmake\modules\Vdump.cmake" />
+    <None Include="cmake_uninstall.cmake.in" />
+    <None Include="decnumber.pdf" />
+    <None Include="ERRATA" />
+    <None Include="ICU-license.html" />
+    <None Include="platform.h.in" />
+    <None Include="README.md" />
+    <None Include="vstools.cmd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="cflags.txt" />
+    <Text Include="CMakeLists.txt" />
+    <Text Include="extra.txt" />
+    <Text Include="headers.txt" />
+    <Text Include="includes.txt" />
+    <Text Include="project.txt" />
+    <Text Include="README.txt" />
+    <Text Include="sources.txt" />
+    <Text Include="targetver.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

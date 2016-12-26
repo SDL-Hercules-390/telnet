@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{03030783-2e4e-4f9e-a9da-6c6bd1037bd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\examples">
+      <UniqueIdentifier>{e61e6818-93ba-4180-97aa-53736c153540}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\include">
+      <UniqueIdentifier>{397ca917-cbdb-4bb6-a6c7-10d194b393d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\source">
+      <UniqueIdentifier>{43a3d414-deb4-4d72-8782-c452431ef6b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Other Files">
+      <UniqueIdentifier>{bbefce2f-3c79-4498-aad0-3024bfe469b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Other Files\doc">
+      <UniqueIdentifier>{ae136e36-774a-4e05-9231-ffb8429cc7a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Other Files\build">
+      <UniqueIdentifier>{f3701bd8-50b9-4f19-a88e-fbf656010ba3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Other Files\build\cmake">
+      <UniqueIdentifier>{318a1f29-1c2d-4f34-a67e-5f3b8c9505e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Other Files\build\cmake\modules">
+      <UniqueIdentifier>{005a553f-0219-4895-ab1d-4b65d3e7d97e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Other Files\build\cmake\includes">
+      <UniqueIdentifier>{fbdb43d6-d72b-47fc-92d2-db65f00c304a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Other Files\build\scripts">
+      <UniqueIdentifier>{6c0a460e-2b3d-4dd7-95af-21740377d267}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Other Files\build\scripts\Linux">
+      <UniqueIdentifier>{90b0230f-3768-41be-9575-86c80efff276}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Other Files\build\scripts\Windows">
+      <UniqueIdentifier>{6a8435c8-4aa2-4b77-ba50-f6cb1c7ea7dc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="examples\example1.c">
+      <Filter>Source Files\examples</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\example2.c">
+      <Filter>Source Files\examples</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\example3.c">
+      <Filter>Source Files\examples</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\example4.c">
+      <Filter>Source Files\examples</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\example5.c">
+      <Filter>Source Files\examples</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\example6.c">
+      <Filter>Source Files\examples</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\example7.c">
+      <Filter>Source Files\examples</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\example8.c">
+      <Filter>Source Files\examples</Filter>
+    </ClCompile>
+    <ClCompile Include="source\decContext.c">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\decDouble.c">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\decimal128.c">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\decimal32.c">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\decimal64.c">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\decNumber.c">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\decPacked.c">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\decQuad.c">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\decSingle.c">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\decBasic.h">
+      <Filter>Source Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\decCommon.h">
+      <Filter>Source Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\decContext.h">
+      <Filter>Source Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\decDouble.h">
+      <Filter>Source Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\decDPD.h">
+      <Filter>Source Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\decimal128.h">
+      <Filter>Source Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\decimal32.h">
+      <Filter>Source Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\decimal64.h">
+      <Filter>Source Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\decNumber.h">
+      <Filter>Source Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\decNumberLocal.h">
+      <Filter>Source Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\decPacked.h">
+      <Filter>Source Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\decQuad.h">
+      <Filter>Source Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\decSingle.h">
+      <Filter>Source Files\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitattributes">
+      <Filter>Other Files</Filter>
+    </None>
+    <None Include="README.md">
+      <Filter>Other Files</Filter>
+    </None>
+    <None Include="decnumber.pdf">
+      <Filter>Other Files\doc</Filter>
+    </None>
+    <None Include="ERRATA">
+      <Filter>Other Files\doc</Filter>
+    </None>
+    <None Include="ICU-license.html">
+      <Filter>Other Files\doc</Filter>
+    </None>
+    <None Include="BUILDING">
+      <Filter>Other Files\build</Filter>
+    </None>
+    <None Include="cmake_uninstall.cmake.in">
+      <Filter>Other Files\build\cmake</Filter>
+    </None>
+    <None Include="platform.h.in">
+      <Filter>Other Files\build\cmake</Filter>
+    </None>
+    <None Include="cmake\modules\CapitalizeWord.cmake">
+      <Filter>Other Files\build\cmake\modules</Filter>
+    </None>
+    <None Include="cmake\modules\CheckHeader.cmake">
+      <Filter>Other Files\build\cmake\modules</Filter>
+    </None>
+    <None Include="cmake\modules\ConfigHandler.cmake">
+      <Filter>Other Files\build\cmake\modules</Filter>
+    </None>
+    <None Include="cmake\modules\GIT_Revision.cmake">
+      <Filter>Other Files\build\cmake\modules</Filter>
+    </None>
+    <None Include="cmake\modules\HG_Revision.cmake">
+      <Filter>Other Files\build\cmake\modules</Filter>
+    </None>
+    <None Include="cmake\modules\ParseBinaryDir.cmake">
+      <Filter>Other Files\build\cmake\modules</Filter>
+    </None>
+    <None Include="cmake\modules\ParseOption.cmake">
+      <Filter>Other Files\build\cmake\modules</Filter>
+    </None>
+    <None Include="cmake\modules\Trace.cmake">
+      <Filter>Other Files\build\cmake\modules</Filter>
+    </None>
+    <None Include="cmake\modules\Vdump.cmake">
+      <Filter>Other Files\build\cmake\modules</Filter>
+    </None>
+    <None Include="SoftFloat_VS2008.sln">
+      <Filter>Other Files\build\msvc\VS2008</Filter>
+    </None>
+    <None Include="SoftFloat_VS2008.vcproj">
+      <Filter>Other Files\build\msvc\VS2008</Filter>
+    </None>
+    <None Include="SoftFloat_VS2015.sln">
+      <Filter>Other Files\build\msvc\VS2015</Filter>
+    </None>
+    <None Include="SoftFloat_VS2015.vcxproj">
+      <Filter>Other Files\build\msvc\VS2015</Filter>
+    </None>
+    <None Include="SoftFloat_VS2015.vcxproj.filters">
+      <Filter>Other Files\build\msvc\VS2015</Filter>
+    </None>
+    <None Include="build">
+      <Filter>Other Files\build\scripts\Linux</Filter>
+    </None>
+    <None Include="build.cmd">
+      <Filter>Other Files\build\scripts\Windows</Filter>
+    </None>
+    <None Include="vstools.cmd">
+      <Filter>Other Files\build\scripts\Windows</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="readme.txt">
+      <Filter>Other Files\doc</Filter>
+    </Text>
+    <Text Include="CMakeLists.txt">
+      <Filter>Other Files\build\cmake</Filter>
+    </Text>
+    <Text Include="cflags.txt">
+      <Filter>Other Files\build\cmake\includes</Filter>
+    </Text>
+    <Text Include="extra.txt">
+      <Filter>Other Files\build\cmake\includes</Filter>
+    </Text>
+    <Text Include="headers.txt">
+      <Filter>Other Files\build\cmake\includes</Filter>
+    </Text>
+    <Text Include="includes.txt">
+      <Filter>Other Files\build\cmake\includes</Filter>
+    </Text>
+    <Text Include="project.txt">
+      <Filter>Other Files\build\cmake\includes</Filter>
+    </Text>
+    <Text Include="sources.txt">
+      <Filter>Other Files\build\cmake\includes</Filter>
+    </Text>
+    <Text Include="targetver.txt">
+      <Filter>Other Files\build\cmake\includes</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
