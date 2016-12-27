@@ -137,38 +137,10 @@
     </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="examples\example1.c" />
-    <ClCompile Include="examples\example2.c" />
-    <ClCompile Include="examples\example3.c" />
-    <ClCompile Include="examples\example4.c" />
-    <ClCompile Include="examples\example5.c" />
-    <ClCompile Include="examples\example6.c" />
-    <ClCompile Include="examples\example7.c" />
-    <ClCompile Include="examples\example8.c" />
-    <ClCompile Include="source\decContext.c" />
-    <ClCompile Include="source\decDouble.c" />
-    <ClCompile Include="source\decimal128.c" />
-    <ClCompile Include="source\decimal32.c" />
-    <ClCompile Include="source\decimal64.c" />
-    <ClCompile Include="source\decNumber.c" />
-    <ClCompile Include="source\decPacked.c" />
-    <ClCompile Include="source\decQuad.c" />
-    <ClCompile Include="source\decSingle.c" />
+    <ClCompile Include="source\telnet.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\decBasic.h" />
-    <ClInclude Include="include\decCommon.h" />
-    <ClInclude Include="include\decContext.h" />
-    <ClInclude Include="include\decDouble.h" />
-    <ClInclude Include="include\decDPD.h" />
-    <ClInclude Include="include\decimal128.h" />
-    <ClInclude Include="include\decimal32.h" />
-    <ClInclude Include="include\decimal64.h" />
-    <ClInclude Include="include\decNumber.h" />
-    <ClInclude Include="include\decNumberLocal.h" />
-    <ClInclude Include="include\decPacked.h" />
-    <ClInclude Include="include\decQuad.h" />
-    <ClInclude Include="include\decSingle.h" />
+    <ClInclude Include="include\telnet.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitattributes" />
@@ -178,6 +150,7 @@
     <None Include="cmake\modules\CapitalizeWord.cmake" />
     <None Include="cmake\modules\CheckHeader.cmake" />
     <None Include="cmake\modules\ConfigHandler.cmake" />
+    <None Include="cmake\modules\cotire.cmake" />
     <None Include="cmake\modules\GIT_Revision.cmake" />
     <None Include="cmake\modules\HG_Revision.cmake" />
     <None Include="cmake\modules\ParseBinaryDir.cmake" />
@@ -185,23 +158,26 @@
     <None Include="cmake\modules\Trace.cmake" />
     <None Include="cmake\modules\Vdump.cmake" />
     <None Include="cmake_uninstall.cmake.in" />
-    <None Include="decnumber.pdf" />
-    <None Include="ERRATA" />
-    <None Include="ICU-license.html" />
     <None Include="platform.h.in" />
     <None Include="README.md" />
     <None Include="vstools.cmd" />
+    <None Include="telnet_VS2008.sln" />
+    <None Include="telnet_VS2008.vcproj" />
+    <None Include="telnet_VS2015.sln" />
+    <None Include="telnet_VS2015.vcxproj" />
+    <None Include="telnet_VS2015.vcxproj.filters" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="cflags.txt" />
-    <Text Include="CMakeLists.txt" />
     <Text Include="extra.txt" />
     <Text Include="headers.txt" />
     <Text Include="includes.txt" />
     <Text Include="project.txt" />
-    <Text Include="README.txt" />
     <Text Include="sources.txt" />
     <Text Include="targetver.txt" />
+    <Text Include="CMakeLists.txt" />
+    <Text Include="LICENSE.txt" />
+    <Text Include="README.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
