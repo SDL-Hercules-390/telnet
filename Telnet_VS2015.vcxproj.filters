@@ -4,9 +4,6 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{855CC674-FB9F-4211-B0FE-47B7E3A0E53B}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\examples">
-      <UniqueIdentifier>{36310691-FC80-4b4b-82CE-3FDA5CE98FE7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\include">
       <UniqueIdentifier>{E743F63B-7D57-4b78-998E-F204BE3322EB}</UniqueIdentifier>
     </Filter>
@@ -30,6 +27,15 @@
     </Filter>
     <Filter Include="Other Files\build\cmake\includes">
       <UniqueIdentifier>{38C2CF9D-43D5-4d22-A61D-C73D8B9D004A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Other Files\build\msvc">
+      <UniqueIdentifier>{4f4109b6-c0ef-4e32-a1f4-deb22d044cbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Other Files\build\msvc\VS2008">
+      <UniqueIdentifier>{f9065844-6c95-417d-acf1-765a3a17e14d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Other Files\build\msvc\VS2015">
+      <UniqueIdentifier>{030664e5-56bb-45db-8005-dfea8bbeb12a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Other Files\build\scripts">
       <UniqueIdentifier>{901A5D2A-90F1-48e0-9617-76D69A6696A5}</UniqueIdentifier>
@@ -55,11 +61,8 @@
     <None Include=".gitattributes">
       <Filter>Other Files</Filter>
     </None>
-    <None Include="LICENSE.txt">
-      <Filter>Other Files</Filter>
-    </None>
     <None Include="README.md">
-      <Filter>Other Files</Filter>
+      <Filter>Other Files\doc</Filter>
     </None>
     <None Include="BUILDING">
       <Filter>Other Files\build</Filter>
@@ -152,6 +155,9 @@
     </Text>
     <Text Include="targetver.txt">
       <Filter>Other Files\build\cmake\includes</Filter>
+    </Text>
+    <Text Include="LICENSE.txt">
+      <Filter>Other Files\doc</Filter>
     </Text>
   </ItemGroup>
 </Project>
