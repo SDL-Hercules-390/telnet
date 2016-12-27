@@ -134,14 +134,6 @@
 				RelativePath=".gitattributes"
 				>
 			</File>
-			<File
-				RelativePath=".\LICENSE.txt"
-				>
-			</File>
-			<File
-				RelativePath="README.md"
-				>
-			</File>
 			<Filter
 				Name="build"
 				>
@@ -301,6 +293,14 @@
 			<Filter
 				Name="doc"
 				>
+				<File
+					RelativePath=".\LICENSE.txt"
+					>
+				</File>
+				<File
+					RelativePath="README.md"
+					>
+				</File>
 				<File
 					RelativePath=".\README.txt"
 					>
