@@ -114,15 +114,4 @@
   #endif
 #endif
 
-#ifdef _MSC_VER
-  #define close_socket(s)   closesocket(s)
-  #define snprintf          _win_snprintf
-  #define vsnprintf         _win_vsnprintf
-#else
-  #define close_socket(s)   close(s)
-  #define snprintf          snprintf
-  #define vsnprintf         vsnprintf
-#endif
-
-
 #endif /* _PLATFORM_H_ */

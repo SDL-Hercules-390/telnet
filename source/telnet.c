@@ -100,52 +100,6 @@ static const unsigned int _buffer_sizes[] =
 static const unsigned int _num_buffer_sizes = sizeof(_buffer_sizes)
                                             / sizeof(_buffer_sizes[0]);
 
-#ifdef _MSC_VER
-/*-------------------------------------------------------------------*/
-/*                      Windows vsnprintf                            */
-/*-------------------------------------------------------------------*/
-/*                                                                   */
-/*  The Windows version of vsnprintf doesn't always terminate        */
-/*  the buffer and returns -1 if count is too small. The following   */
-/*  compensates for such behavior in order to match the POSIX        */
-/*  behavior of: 1) returning the number of bytes (excluding the     */
-/*  terminating null byte) that would be written had count been      */
-/*  sufficiently large, 2) always appending a terminating null       */
-/*  byte regardless of whether count is large enough.                */
-/*                                                                   */
-/*-------------------------------------------------------------------*/
-static int _win_vsnprintf( char* bfr, size_t cnt, const char* fmt, va_list vargs )
-{
-    int rc = _vsnprintf_s( bfr, cnt, _TRUNCATE, fmt, vargs );
-    if (rc < 0)
-        rc = _vscprintf( fmt, vargs );
-    return rc;
-}
-
-/*-------------------------------------------------------------------*/
-/*                      Windows snprintf                             */
-/*-------------------------------------------------------------------*/
-/*                                                                   */
-/*  The Windows version of snprintf doesn't always terminate         */
-/*  the buffer and returns -1 if count is too small. The following   */
-/*  compensates for such behavior in order to match the POSIX        */
-/*  behavior of: 1) returning the number of bytes (excluding the     */
-/*  terminating null byte) that would be written had count been      */
-/*  sufficiently large, 2) always appending a terminating null       */
-/*  byte regardless of whether count is large enough.                */
-/*                                                                   */
-/*-------------------------------------------------------------------*/
-static int _win_snprintf( char* bfr, size_t cnt, const char* fmt, ... )
-{
-    int       rc;
-    va_list   vargs;
-    va_start( vargs, fmt );
-    rc = _win_vsnprintf( bfr, cnt, fmt, vargs );
-    va_end( vargs);
-    return rc;
-}
-#endif /* _MSC_VER */
-
 /*-------------------------------------------------------------------*/
 /*                   Error generation function                       */
 /*-------------------------------------------------------------------*/
@@ -1847,7 +1801,14 @@ static int _shut_socket( int sock, double max_secs )
 int telnet_closesocket( int sock )  /* graceful close */
 {
     /* Returns 0 == success, -1 == error w/errno */
+
     int shut_rc  = _shut_socket( sock, LIBTN_GRACEFUL_SOCKCLOSESECS );
-    int close_rc = close_socket( sock );
+
+#ifdef _MSC_VER
+    int close_rc = closesocket( sock ); /* Windows */
+#else
+    int close_rc = close( sock );       /* Linux */
+#endif
+
     return close_rc != 0 ? close_rc : shut_rc;
 }
