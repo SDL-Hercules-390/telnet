@@ -31,6 +31,11 @@
 
   #include <stdio.h>                    /* Standard I/O routines     */
   #include <stdarg.h>                   /* variable argument macros  */
+  #include <stdlib.h>                   /* need malloc/free, etc     */
+  #include <errno.h>                    /* need 'errno', etc         */
+  #include <string.h>                   /* need memcpy/memset, etc   */
+
+  typedef unsigned char BYTE;           /* need 'BYTE' typedef       */
 
 #endif /* Windows or not                                             */
 
