@@ -1,4 +1,4 @@
-# Simple RFC-complient TELNET implementation for Hercules
+# Simple RFC-complient TELNET implementation
 
 ## Overview
 
