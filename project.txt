@@ -5,7 +5,7 @@
 project( telnet VERSION 1.0.0 )
 
 set( PROJECT_DESCRIPTION
-     "Simple RFC-complient TELNET implementation for Hercules"
+     "Simple RFC-complient TELNET implementation"
      CACHE PATH "Project description" FORCE )
 
 #------------------------------------------------------------------------------
