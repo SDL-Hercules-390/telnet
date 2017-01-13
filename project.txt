@@ -2,10 +2,11 @@
 #   Define the project
 #------------------------------------------------------------------------------
 
-project( telnet VERSION 1.0.0 )
+set( EXTPKG_NAME  "telnet"                                     )
+set( EXTPKG_VERS  "1.0.0"                                      )
+set( EXTPKG_DESC  "Simple RFC-complient TELNET implementation" )
 
-set( PROJECT_DESCRIPTION
-     "Simple RFC-complient TELNET implementation"
-     CACHE PATH "Project description" FORCE )
+project( ${EXTPKG_NAME} VERSION ${EXTPKG_VERS} )
+set( PROJECT_DESCRIPTION "${EXTPKG_DESC}" CACHE PATH "Project description" FORCE )
 
 #------------------------------------------------------------------------------

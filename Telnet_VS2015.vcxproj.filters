@@ -51,10 +51,16 @@
     <ClCompile Include="source\telnet.c">
       <Filter>Source Files\source</Filter>
     </ClCompile>
+    <ClCompile Include="telnet_version.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\telnet.h">
       <Filter>Source Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="telnet_version.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +98,9 @@
       <Filter>Other Files\build\cmake\modules</Filter>
     </None>
     <None Include="cmake\modules\Vdump.cmake">
+      <Filter>Other Files\build\cmake\modules</Filter>
+    </None>
+    <None Include="cmake\modules\Version.cmake">
       <Filter>Other Files\build\cmake\modules</Filter>
     </None>
     <None Include="telnet_VS2008.sln">

@@ -138,9 +138,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\telnet.c" />
+    <ClCompile Include="telnet_version.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\telnet.h" />
+    <ClInclude Include="telnet_version.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitattributes" />
@@ -154,6 +156,7 @@
     <None Include="cmake\modules\ParseBinaryDir.cmake" />
     <None Include="cmake\modules\Trace.cmake" />
     <None Include="cmake\modules\Vdump.cmake" />
+    <None Include="cmake\modules\Version.cmake" />
     <None Include="cmake_uninstall.cmake.in" />
     <None Include="platform.h.in" />
     <None Include="README.md" />

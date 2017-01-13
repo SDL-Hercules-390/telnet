@@ -110,6 +110,14 @@
 		<Filter
 			Name="Source Files"
 			>
+			<File
+				RelativePath=".\telnet_version.c"
+				>
+			</File>
+			<File
+				RelativePath=".\telnet_version.h"
+				>
+			</File>
 			<Filter
 				Name="include"
 				>
@@ -185,6 +193,10 @@
 						</File>
 						<File
 							RelativePath="cmake\modules\Vdump.cmake"
+							>
+						</File>
+						<File
+							RelativePath=".\cmake\modules\Version.cmake"
 							>
 						</File>
 					</Filter>
