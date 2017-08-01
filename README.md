@@ -1,5 +1,5 @@
 # Telnet
-### Simple RFC-complient TELNET implementation
+### Simple RFC-compliant TELNET implementation
 #### v1.0.0
 
 ## Overview
