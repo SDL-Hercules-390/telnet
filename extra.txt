@@ -2,8 +2,8 @@
 #   Define additional files to be installed
 #------------------------------------------------------------------------------
 
-install( FILES "LICENSE.txt" DESTINATION . )
-install( FILES "README.txt"  DESTINATION . )
+install( FILES "telnet.LICENSE.txt" DESTINATION . )
+install( FILES "telnet.README.txt"  DESTINATION . )
 
 #------------------------------------------------------------------------------
 

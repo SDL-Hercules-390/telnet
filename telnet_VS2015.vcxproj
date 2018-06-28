@@ -179,8 +179,8 @@
     <Text Include="sources.txt" />
     <Text Include="targetver.txt" />
     <Text Include="CMakeLists.txt" />
-    <Text Include="LICENSE.txt" />
-    <Text Include="README.txt" />
+    <Text Include="telnet.LICENSE.txt" />
+    <Text Include="telnet.README.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

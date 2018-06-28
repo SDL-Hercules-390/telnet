@@ -310,7 +310,7 @@
 				Name="doc"
 				>
 				<File
-					RelativePath=".\LICENSE.txt"
+					RelativePath=".\telnet.LICENSE.txt"
 					>
 				</File>
 				<File
@@ -318,7 +318,7 @@
 					>
 				</File>
 				<File
-					RelativePath=".\README.txt"
+					RelativePath=".\telnet.README.txt"
 					>
 				</File>
 			</Filter>

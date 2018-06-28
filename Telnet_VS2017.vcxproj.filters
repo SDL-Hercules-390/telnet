@@ -141,7 +141,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="README.txt">
+    <Text Include="telnet.README.txt">
       <Filter>Other Files\doc</Filter>
     </Text>
     <Text Include="CMakeLists.txt">
@@ -168,7 +168,7 @@
     <Text Include="targetver.txt">
       <Filter>Other Files\build\cmake\includes</Filter>
     </Text>
-    <Text Include="LICENSE.txt">
+    <Text Include="telnet.LICENSE.txt">
       <Filter>Other Files\doc</Filter>
     </Text>
   </ItemGroup>
