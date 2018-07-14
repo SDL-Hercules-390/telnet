@@ -1410,7 +1410,7 @@ int telnet_vprintf( telnet_t* telnet, const char* fmt, va_list va )
     {
         /* Special character? */
         if (0
-            || output[i] == (char)TELNET_IAC
+            || output[i] == (char) TELNET_IAC
             || output[i] == '\r'
             || output[i] == '\n'
         )
@@ -1421,7 +1421,7 @@ int telnet_vprintf( telnet_t* telnet, const char* fmt, va_list va )
 
             /* IAC -> IAC IAC */
             if (output[i] == (char) TELNET_IAC)
-                output[i+1] = TELNET_IAC;
+                output[i+1] = (char) TELNET_IAC;
 
             /* Automatic translation of \r -> CRNUL */
             else if (output[i] == '\r')
