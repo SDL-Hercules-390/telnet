@@ -69,7 +69,7 @@ If clang/clang++ is not in your $PATH, then you will need to specify its full pa
 
 The telnet project is hosted on GitHub at the following URL:
 
-  * [https://github.com/Fish-Git/telnet](https://github.com/Fish-Git/telnet)
+  * [https://github.com/sdl-hercules-390/telnet](https://github.com/sdl-hercules-390/telnet)
 
 You can either clone the git repository (recommended) or download the source code .zip file from github.  (click the green "Clone or download" button and select "Download")
 
@@ -145,7 +145,7 @@ To use the automated build method all you need to do is first create a WORK dire
 Then, from within that WORK directory, simply invoke the package's **build** script:
 
 ```
-  ..\telnet\build --pkgname . --all --install ..\hyperion\telnet
+  ..\telnet-repo\build --pkgname . --all --install ..\hyperion\telnet
 ```
 
 This will build the package (within your WORK directory) and automatically install the results into the given hercules external package subdirectory. Then simply build hercules like normal.

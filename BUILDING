@@ -46,7 +46,7 @@ full path in the CC/CXX export commands.
 The telnet project is hosted on GitHub at the following URL:
 
 
-    https://github.com/Fish-Git/telnet
+    https://github.com/sdl-hercules-390/telnet
 
 
 You can either clone the git repository (recommended) or download the source
@@ -143,7 +143,7 @@ Then, from within that WORK directory, simply invoke the package's "build"
 script:
 
 
-  ..\telnet\build --pkgname . --all --install ..\hyperion\telnet
+  ..\telnet-repo\build --pkgname . --all --install ..\hyperion\telnet
 
 
 This will build the package (within your WORK directory) and automatically
