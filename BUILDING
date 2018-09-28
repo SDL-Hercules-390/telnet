@@ -143,12 +143,23 @@ Then, from within that WORK directory, simply invoke the package's "build"
 script:
 
 
-  ..\telnet-repo\build --pkgname . --all --install ..\hyperion\telnet
+  ..\telnet-repo\build --pkgname . --all --install ..\hercpkgs
 
 
 This will build the package (within your WORK directory) and automatically
-install the results into the given hercules external package subdirectory.
-Then simply build hercules like normal.
+install the results into the specified common external packages directory
+(e.g. 'hercpkgs').
+
+Then, for Windows, add that directory's 'lib' subdirectory to your system's
+'LIB' environment variable before you build Hercules. (Remember, this only
+needs to be done once and never again!).
+
+For Linux, just specify that same directory for your "--enable-extpkgs=DIR"
+configure option during your Hercules build:
+
+
+  ./configure  ...  --enable-extpkgs=../hercpkgs
+
 
 Enter "build --help" and/or refer to the appropriate Hercules documentation
 for more information regarding building Hercules external packages.
@@ -191,11 +202,15 @@ desired Hercules subdirectory, eliminating the need for the manual copy.
                           NON-X86 ARCHITECTURES
 
 To build a non-x86 architectural version of an external package simply build
-it like normal but install it within its own unique architectural directory
-within Hercules's main external package subdirectory.  That is to say, you
-should specify e.g. "hyperion/telnet/sparc" as your --install directory.
+it like normal (as explained in the automated Command Line method above) but
+add a "--cpu xxx" option to your build command to cause the lib files to be
+installed into their own unique subdirectory within the specified directory:
 
-Hercules currently understands the following foreign architectures: arm, mips,
-ppc, sparc, xscale and unknown.
+
+  ../telnet-repo/build --pkgname . --all --cpu xxx --install ../hercpkgs
+
+
+Hercules currently understands the following non-x86 cpu architectures: arm,
+mips, ppc, sparc, xscale and unknown.
 
 -------------------------------------------------------------------------------

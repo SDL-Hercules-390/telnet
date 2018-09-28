@@ -178,4 +178,16 @@ Remove the 'CMakeCache.txt' file and the entire 'CMakeFiles' directory and try a
 
     trace( CMAKE_INSTALL_PREFIX )
 
+    #--------------------------------------------------------------------------
+    #  Define the library install directory     (passed via command line)
+    #--------------------------------------------------------------------------
+
+    if( DEFINED LIB_INSTALL_DIR )
+      set( LIB_INSTALL_DIR  "${LIB_INSTALL_DIR}" )
+    else()
+      set( LIB_INSTALL_DIR  "lib" )
+    endif()
+
+    trace( LIB_INSTALL_DIR  )
+
 endmacro()

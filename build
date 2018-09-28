@@ -3,8 +3,8 @@
   #  If this bash script works then it was written by Fish.
   #  If it doesn't then I don't know who the heck wrote it.
 
-  _versnum="2.1"
-  _versdate="February, 2018"
+  _versnum="2.2"
+  _versdate="September, 2018"
 
 #------------------------------------------------------------------------------
 #                                   BUILD
@@ -18,16 +18,17 @@ help()
   errmsg ""
   errmsg "    SYNOPSIS"
   errmsg ""
-  errmsg "        $nx0   [ { -d   | --pkgdir    }    pkgdir               ]"
-  errmsg "                [ { -n   | --pkgname   }    pkgname              ]"
-  errmsg "                [ { -a   | --arch      }  64      | 32    | BOTH ]"
-  errmsg "                [ { -c   | --config    }  Release | Debug | BOTH ]"
-  errmsg "                [ { -all | --all       }                         ]"
-  errmsg "                [ { -r   | --rebuild   }                         ]"
-  errmsg "                [ { -i   | --install   }  [ instdir ]            ]"
-  errmsg "                [ { -u   | --uninstall }  [ uinstdir ]           ]"
-  errmsg "                [ { -f   | --force     }                         ]"
-  errmsg "                [ { -su  | --sudo      }                         ]"
+  errmsg "        $nx0   [ { -d   | --pkgdir    }  [ pkgdir ]                 ]"
+  errmsg "                [ { -n   | --pkgname   }  [ pkgname ]                ]"
+  errmsg "                [ { -m   | --cpu       }  { arch }                   ]"
+  errmsg "                [ { -a   | --arch      }  { 64      | 32    | BOTH } ]"
+  errmsg "                [ { -c   | --config    }  { Release | Debug | BOTH } ]"
+  errmsg "                [ { -all | --all       }                             ]"
+  errmsg "                [ { -r   | --rebuild   }                             ]"
+  errmsg "                [ { -i   | --install   }  [ instdir ]                ]"
+  errmsg "                [ { -u   | --uninstall }  [ uinstdir ]               ]"
+  errmsg "                [ { -f   | --force     }                             ]"
+  errmsg "                [ { -su  | --sudo      }                             ]"
   errmsg ""
   errmsg "    ARGUMENTS"
   errmsg ""
@@ -43,6 +44,11 @@ help()
   errmsg "                   directory component of pkgdir.  The value \".\" may"
   errmsg "                   be specified to derive from the last component of"
   errmsg "                   the current directory instead."
+  errmsg ""
+  errmsg "        cpu        The machine (CPU) architecture of the target system"
+  errmsg "                   if other than x86.  Recognized machine architectures"
+  errmsg "                   are: arm, mips, ppc, sparc, xscale, x86 and unknown."
+  errmsg "                   The default if not specified is x86."
   errmsg ""
   errmsg "        arch       The build architecture. Use '32' to build an x86"
   errmsg "                   32-bit version of the package. Use '64' to build"
@@ -97,7 +103,7 @@ help()
   errmsg "        changes to the build directory, invokes the cmake command (to"
   errmsg "        create the makefile) and then issues the make and make install"
   errmsg "        commands to actually build and install the specified package"
-  errmsg "        for the specified architecture and configuration combination."
+  errmsg "        for the given cpu, architecture and configuration combination."
   errmsg "        The name of the build directory is derived from the package's"
   errmsg "        name and the specified architetcure/configuration combination."
   errmsg ""
@@ -154,6 +160,7 @@ init()
   rebuild=""
   force=""
   bldall=""
+  cpu=""
   sudo=""
 
   #  Default values...
@@ -568,6 +575,14 @@ parse_args()
           fi
           ;;
 
+        m)
+
+          if [[ -z $optval ]]; then parse_missing_optarg; else
+            cpu="$optval"
+            shift 1 # (consume this option's value)
+          fi
+          ;;
+
         # ------------------------------------
         #  Options whose argument is optional
         # ------------------------------------
@@ -672,6 +687,14 @@ parse_args()
 
                 if [[ -z $optval ]]; then parse_missing_optarg; else
                   config="$optval"
+                  shift 1 # (consume this option's value)
+                fi
+                ;;
+
+              cpu)
+
+                if [[ -z $optval ]]; then parse_missing_optarg; else
+                  cpu="$optval"
                   shift 1 # (consume this option's value)
                 fi
                 ;;
@@ -796,6 +819,7 @@ parse_args()
   trace "instdir   = \"$instdir\""
   trace "uninstall = \"$uninstall\""
   trace "uinstdir  = \"$uinstdir\""
+  trace "cpu       = \"$cpu\""
   trace "arch      = \"$arch\""
   trace "config    = \"$config\""
   trace "rebuild   = \"$rebuild\""
@@ -955,6 +979,26 @@ validate_args()
     bldall=1
   fi
 
+  #  Validate 'cpu' option
+
+  if [[ -z $cpu ]]; then
+    cpu="x86"
+  fi
+
+  if [[ "$cpu" != "arm"     ]]  && \
+     [[ "$cpu" != "mips"    ]]  && \
+     [[ "$cpu" != "ppc"     ]]  && \
+     [[ "$cpu" != "sparc"   ]]  && \
+     [[ "$cpu" != "xscale"  ]]  && \
+     [[ "$cpu" != "x86"     ]]  && \
+     [[ "$cpu" != "unknown" ]]; then
+    errmsg "ERROR: Invalid machine cpu \"$cpu\""
+  fi
+
+  if [[ "$cpu" == "x86" ]]; then
+    cpu=""
+  fi
+
   #----------------------------------------------------------------------------
   #  Validate arg sanity
 
@@ -987,6 +1031,7 @@ validate_args()
   trace "instdir   = \"$instdir\""
   trace "uninstall = \"$uninstall\""
   trace "uinstdir  = \"$uinstdir\""
+  trace "cpu       = \"$cpu\""
   trace "arch      = \"$arch\""
   trace "config    = \"$config\""
   trace "rebuild   = \"$rebuild\""
@@ -1323,7 +1368,13 @@ do_configure()
       install_prefix_opt="-D INSTALL_PREFIX=$instdir"
     fi
 
-    cmake  $install_prefix_opt  "$pkgdir"
+    if [[ -n $cpu ]]; then
+      lib_dir_opt="-DLIB_INSTALL_DIR=lib/${cpu}"
+    else
+      lib_dir_opt="-DLIB_INSTALL_DIR=lib"
+    fi
+
+    cmake  $install_prefix_opt  $lib_dir_opt  "$pkgdir"
 
     rc=$?
     update_maxrc

@@ -2,7 +2,8 @@
 #   Adjust needed compile flags for this project/package
 #------------------------------------------------------------------------------
 
-include( targetver.txt )      # Define minimum required Windows platform
+include( CheckCCompilerFlag )   # Check compiler support for certain flags
+include( targetver.txt      )   # Define minimum required Windows platform
 
 
 #------------------------------------------------------------------------------
@@ -21,5 +22,32 @@ set( CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO} -D HAVE_PLATF
 
 set( CMAKE_C_FLAGS_DEBUG          "${CMAKE_C_FLAGS_DEBUG}          -D VERS_STRING=${VERS_STRING}" )
 set( CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO} -D VERS_STRING=${VERS_STRING}" )
+
+
+#------------------------------------------------------------------------------
+# Some compilers don't accept either of the '-m32' or '-m64' machine options
+# when support only exists for building 32-bit binaries but not 64-bit (i.e.
+# if 64-bit support hasn't been installed then neither flag is accepted).
+#------------------------------------------------------------------------------
+
+if( NOT WIN32 )
+
+  Check_C_Compiler_Flag( -m32  OK )
+
+  if( OK )
+    set( m32 "-m32" )
+  else()
+    set( m32   ""   )
+  endif()
+
+  Check_C_Compiler_Flag( -m64  OK )
+
+  if( OK )
+    set( m64 "-m64" )
+  else()
+    set( m64   ""   )
+  endif()
+
+endif()
 
 #------------------------------------------------------------------------------

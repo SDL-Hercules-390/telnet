@@ -102,11 +102,11 @@ if( WIN32 )
   # (the toolchain being used (i.e. vstools.cmd 32/64) defines this on Windows)
 else()
   if( BITNESS STREQUAL "32" )
-    set( CMAKE_C_FLAGS_DEBUG          "${CMAKE_C_FLAGS_DEBUG}          -m32 -fPIC" )
-    set( CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO} -m32 -fPIC" )
+    set( CMAKE_C_FLAGS_DEBUG          "${CMAKE_C_FLAGS_DEBUG}          ${m32} -fPIC" )
+    set( CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO} ${m32} -fPIC" )
   else()
-    set( CMAKE_C_FLAGS_DEBUG          "${CMAKE_C_FLAGS_DEBUG}          -m64 -fPIC" )
-    set( CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO} -m64 -fPIC" )
+    set( CMAKE_C_FLAGS_DEBUG          "${CMAKE_C_FLAGS_DEBUG}          ${m64} -fPIC" )
+    set( CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO} ${m64} -fPIC" )
   endif()
 endif()
 
@@ -128,7 +128,7 @@ set_target_properties( ${FULLNAME} PROPERTIES
 
 install( TARGETS ${FULLNAME}
          PUBLIC_HEADER DESTINATION include
-         ARCHIVE       DESTINATION lib )
+         ARCHIVE       DESTINATION ${LIB_INSTALL_DIR} )
 
 
 #------------------------------------------------------------------------------

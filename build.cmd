@@ -6,8 +6,8 @@
   setlocal
   pushd .
 
-  set "_versnum=2.1"
-  set "_versdate=December, 2016"
+  set "_versnum=2.2"
+  set "_versdate=September, 2018"
 
   goto :init
 
@@ -25,8 +25,9 @@
   echo.
   echo         %nx0%   [ { -d   ^| --pkgdir    }  [ pkgdir  ]                 ]
   echo                     [ { -n   ^| --pkgname   }  [ pkgname ]                 ]
-  echo                     [ { -a   ^| --arch      }  [ 64       ^| 32    ^| BOTH ] ]
-  echo                     [ { -c   ^| --config    }  [ Release  ^| Debug ^| BOTH ] ]
+  echo                     [ { -m   ^| --cpu       }  { arch }                    ]
+  echo                     [ { -a   ^| --arch      }  { 64       ^| 32    ^| BOTH } ]
+  echo                     [ { -c   ^| --config    }  { Release  ^| Debug ^| BOTH } ]
   echo                     [ { -all ^| --all       }                              ]
   echo                     [ { -r   ^| --rebuild   }                              ]
   echo                     [ { -i   ^| --install   }  [ instdir  ]                ]
@@ -47,6 +48,11 @@
   echo                    directory component of pkgdir.  The value "." may
   echo                    be specified to derive from the last component of
   echo                    the current directory instead.
+  echo.
+  echo         cpu        The machine (CPU) architecture of the target system
+  echo                    if other than x86.  Recognized machine architectures
+  echo                    are: arm, mips, ppc, sparc, xscale, x86 and unknown.
+  echo                    The default if not specified is x86.
   echo.
   echo         arch       The build architecture. Use '32' to build an x86
   echo                    32-bit version of the package. Use '64' to build
@@ -99,8 +105,8 @@
   echo         commands to actually build and install the package for the specified
   echo         architecture and configuration combination.  The name of the binary
   echo         build directory is derived from the package's name and the specified
-  echo         architetcure/configuration combination.  The vstools.cmd batch file
-  echo         is presumed to exist in the same directory as %nx0%.
+  echo         cpu/architetcure/configuration combination.  The vstools.cmd batch
+  echo         file is presumed to exist in the same directory as %nx0%.
   echo.
   echo     EXIT STATUS
   echo.
@@ -164,6 +170,7 @@
   set "rebuild="
   set "force="
   set "bldall="
+  set "cpu="
 
   @REM  Default values...
 
@@ -528,6 +535,7 @@
   if /i "%optname%" == "r"   goto :parse_rebuild_opt
   if /i "%optname%" == "f"   goto :parse_force_opt
   if /i "%optname%" == "all" goto :parse_all_opt
+  if /i "%optname%" == "m"   goto :parse_cpu_opt
 
   @REM  Determine if "--xxxx" long option
 
@@ -550,6 +558,7 @@
   if /i "%optname%" == "rebuild"   goto :parse_rebuild_opt
   if /i "%optname%" == "force"     goto :parse_force_opt
   if /i "%optname%" == "all"       goto :parse_all_opt
+  if /i "%optname%" == "cpu"       goto :parse_cpu_opt
   if /i "%optname%" == "version"   goto :parse_version_opt
 
   goto :parse_unknown_opt
@@ -583,6 +592,13 @@
 
   if not defined optval goto :parse_missing_optarg
   set "config=%optval%"
+  shift /1
+  goto :parse_options_loop
+
+:parse_cpu_opt
+
+  if not defined optval goto :parse_missing_optarg
+  set "cpu=%optval%"
   shift /1
   goto :parse_options_loop
 
@@ -677,6 +693,7 @@
   %TRACE% instdir   = "%instdir%"
   %TRACE% uninstall = "%uninstall%"
   %TRACE% uinstdir  = "%uinstdir%"
+  %TRACE% cpu       = "%cpu%"
   %TRACE% arch      = "%arch%"
   %TRACE% config    = "%config%"
   %TRACE% rebuild   = "%rebuild%"
@@ -849,6 +866,27 @@
     )
   )
 
+  goto :validate_cpu
+
+::-----------------------------------------------------------------------------
+:validate_cpu
+
+  if not defined cpu %break%
+
+  if /i "%cpu%" == "arm"     %break%
+  if /i "%cpu%" == "mips"    %break%
+  if /i "%cpu%" == "ppc"     %break%
+  if /i "%cpu%" == "sparc"   %break%
+  if /i "%cpu%" == "xscale"  %break%
+  if /i "%cpu%" == "unknown" %break%
+  if /i "%cpu%" == "x86" (
+    set "cpu="
+  ) else (
+    call :errmsg Invalid machine cpu "%cpu%"
+  )
+
+:break
+
   goto :validate_arg_sanity
 
 ::-----------------------------------------------------------------------------
@@ -890,6 +928,7 @@
   %TRACE% instdir   = "%instdir%"
   %TRACE% uninstall = "%uninstall%"
   %TRACE% uinstdir  = "%uinstdir%"
+  %TRACE% cpu       = "%cpu%"
   %TRACE% arch      = "%arch%"
   %TRACE% config    = "%config%"
   %TRACE% rebuild   = "%rebuild%"
@@ -1238,6 +1277,12 @@
     set "install_prefix_opt="
   )
 
+  if defined cpu (
+    set "lib_dir_opt=-DLIB_INSTALL_DIR=lib/%cpu%"
+  ) else (
+    set "lib_dir_opt=-DLIB_INSTALL_DIR=lib"
+  )
+
   :: PROGRAMMING NOTE: CMake apparently uses the 'RC' environment variable
   :: to hold the path to Microsoft's Resource Compiler (rc.exe) and becomes
   :: very upset when it doesn't find it.  Thus we undefine our existing rc
@@ -1247,9 +1292,9 @@
   set "rc="     &&    @REM (allows cmake to find rc.exe)
 
   if defined JOM (
-    cmake -G "NMake Makefiles JOM"  %install_prefix_opt%  "%pkgdir%"
+    cmake -G "NMake Makefiles JOM"  %install_prefix_opt%  %lib_dir_opt%  "%pkgdir%"
   ) else (
-    cmake -G "NMake Makefiles"      %install_prefix_opt%  "%pkgdir%"
+    cmake -G "NMake Makefiles"      %install_prefix_opt%  %lib_dir_opt%  "%pkgdir%"
   )
 
   set "rc=%errorlevel%"
