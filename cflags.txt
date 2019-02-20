@@ -32,6 +32,8 @@ set( CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO} -D VERS_STRIN
 
 if( NOT WIN32 )
 
+  set( TEMP_CMAKE_REQUIRED_FLAGS  "${CMAKE_REQUIRED_FLAGS}" )
+  set( CMAKE_REQUIRED_FLAGS  "-m32" )
   Check_C_Compiler_Flag( -m32  OK )
 
   if( OK )
@@ -40,7 +42,9 @@ if( NOT WIN32 )
     set( m32   ""   )
   endif()
 
+  set( CMAKE_REQUIRED_FLAGS  "-m64" )
   Check_C_Compiler_Flag( -m64  OK )
+  set( CMAKE_REQUIRED_FLAGS  "${TEMP_CMAKE_REQUIRED_FLAGS}" )
 
   if( OK )
     set( m64 "-m64" )
