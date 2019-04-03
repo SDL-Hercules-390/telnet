@@ -6,8 +6,8 @@
   setlocal
   pushd .
 
-  set "_versnum=2.2"
-  set "_versdate=September, 2018"
+  set "_versnum=2.3"
+  set "_versdate=April 2, 2019"
 
   goto :init
 
