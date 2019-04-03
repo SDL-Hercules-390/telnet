@@ -47,8 +47,8 @@ help()
   errmsg ""
   errmsg "        cpu        The machine (CPU) architecture of the target system"
   errmsg "                   if other than x86.  Recognized machine architectures"
-  errmsg "                   are: arm, mips, ppc, sparc, xscale, x86 and unknown."
-  errmsg "                   The default if not specified is x86."
+  errmsg "                   are: aarch, arm, mips, ppc, sparc, xscale, x86 and"
+  errmsg "                   unknown.  The default if not specified is x86."
   errmsg ""
   errmsg "        arch       The build architecture. Use '32' to build an x86"
   errmsg "                   32-bit version of the package. Use '64' to build"
@@ -985,7 +985,8 @@ validate_args()
     cpu="x86"
   fi
 
-  if [[ "$cpu" != "arm"     ]]  && \
+  if [[ "$cpu" != "aarch"   ]]  && \
+     [[ "$cpu" != "arm"     ]]  && \
      [[ "$cpu" != "mips"    ]]  && \
      [[ "$cpu" != "ppc"     ]]  && \
      [[ "$cpu" != "sparc"   ]]  && \
