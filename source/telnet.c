@@ -1293,6 +1293,18 @@ void telnet_iac( telnet_t* telnet, BYTE cmd )
 }
 
 /*-------------------------------------------------------------------*/
+/* Send a single byte (typically 3270 R or RM), followed by IAC+EOR  */
+/*-------------------------------------------------------------------*/
+void telnet_3270_cmd( telnet_t* telnet, BYTE cmd )
+{
+    BYTE  bytes[3] = {0x00, TELNET_IAC, TELNET_EOR};
+
+    bytes[0] = cmd;
+
+    _send( telnet, bytes, 3 );
+}
+
+/*-------------------------------------------------------------------*/
 /*           Send non-command data (escapes IAC bytes)               */
 /*-------------------------------------------------------------------*/
 void telnet_send
@@ -1323,6 +1335,55 @@ void telnet_send
     /* Send whatever portion of buffer is left */
     if (i > k)
         _send( telnet, buffer + k, i - k );
+}
+
+/*-------------------------------------------------------------------*/
+/* Buffer non-command data, append IAC+EOR and send in one shot      */
+/*-------------------------------------------------------------------*/
+void telnet_send_one_shot
+(
+    telnet_t*     telnet,
+    const BYTE*   buffer,
+    unsigned int  size,
+    char*         sendbuf
+)
+{
+    unsigned int i, k, s;
+
+    for (i=0, k=0, s=0; i < size; ++i)
+    {
+        /* Copy prior portion of text, append escaped byte */
+        if (buffer[i] == TELNET_IAC)
+        {
+            /* Copy prior text if any */
+            if (i > k)
+            {
+                memcpy( sendbuf + s, buffer + k, i - k );
+                s = s + i - k;
+            }
+
+            k = i + 1;
+
+            /* Copy escape */
+            sendbuf[s]   = TELNET_IAC;
+            sendbuf[s+1] = TELNET_IAC;
+            s = s + 2;
+        }
+    }
+
+    /* Copy whatever portion of buffer is left */
+    if (i > k)
+    {
+        memcpy( sendbuf + s, buffer + k, i - k );
+        s = s + i - k;
+    }
+
+    /* Append IAC+EOR */
+    sendbuf[s]   = TELNET_IAC;
+    sendbuf[s+1] = TELNET_EOR;
+
+    /* Send everything */
+    _send( telnet, sendbuf, s + 2 );
 }
 
 /*-------------------------------------------------------------------*/
