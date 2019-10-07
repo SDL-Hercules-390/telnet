@@ -184,6 +184,6 @@ To build a non-x86 architectural version of an external package simply build it 
   ../telnet-repo/build --pkgname . --all --cpu xxx --install ../hercpkgs
 
 
-Hercules currently understands the following non-x86 cpu architectures: arm, mips, ppc, sparc, xscale and unknown.
+Hercules currently understands the following non-x86 cpu architectures: arm, mips, ppc, sparc, xscale, s390x and unknown.
 
 -------------------------------------------------------------------------------

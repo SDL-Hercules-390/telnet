@@ -211,6 +211,6 @@ installed into their own unique subdirectory within the specified directory:
 
 
 Hercules currently understands the following non-x86 cpu architectures: arm,
-mips, ppc, sparc, xscale and unknown.
+mips, ppc, sparc, xscale, s390x and unknown.
 
 -------------------------------------------------------------------------------

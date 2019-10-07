@@ -51,8 +51,8 @@
   echo.
   echo         cpu        The machine (CPU) architecture of the target system
   echo                    if other than x86.  Recognized machine architectures
-  echo                    are: aarch, arm, mips, ppc, sparc, xscale, x86 and
-  echo                    unknown. The default if not specified is x86.
+  echo                    are: aarch, arm, mips, ppc, sparc, xscale, s390x, x86
+  echo                    and unknown. The default if not specified is x86.
   echo.
   echo         arch       The build architecture. Use '32' to build an x86
   echo                    32-bit version of the package. Use '64' to build
