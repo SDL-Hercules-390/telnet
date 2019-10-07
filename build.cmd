@@ -871,7 +871,7 @@
 ::-----------------------------------------------------------------------------
 :validate_cpu
 
-  if not defined cpu %break%
+  if not defined cpu set "cpu=x86"
 
   if /i "%cpu%" == "aarch"   %break%
   if /i "%cpu%" == "arm"     %break%
@@ -879,14 +879,15 @@
   if /i "%cpu%" == "ppc"     %break%
   if /i "%cpu%" == "sparc"   %break%
   if /i "%cpu%" == "xscale"  %break%
+  if /i "%cpu%" == "x86"     %break%
+  if /i "%cpu%" == "s390x"   %break%
   if /i "%cpu%" == "unknown" %break%
-  if /i "%cpu%" == "x86" (
-    set "cpu="
-  ) else (
-    call :errmsg Invalid machine cpu "%cpu%"
-  )
+
+  call :errmsg Invalid machine cpu "%cpu%"
 
 :break
+
+  if /i "%cpu%" == "x86" set "cpu="
 
   goto :validate_arg_sanity
 

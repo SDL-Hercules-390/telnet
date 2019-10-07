@@ -992,6 +992,7 @@ validate_args()
      [[ "$cpu" != "sparc"   ]]  && \
      [[ "$cpu" != "xscale"  ]]  && \
      [[ "$cpu" != "x86"     ]]  && \
+     [[ "$cpu" != "s390x"   ]]  && \
      [[ "$cpu" != "unknown" ]]; then
     errmsg "ERROR: Invalid machine cpu \"$cpu\""
   fi
