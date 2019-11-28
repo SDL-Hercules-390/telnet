@@ -35,7 +35,7 @@
   echo     NOTES
   echo.
   echo         Some flavor of Visual Studio must obviously be installed.
-  echo         Supported versions are Visual Studio 2005 through 2017.
+  echo         Supported versions are Visual Studio 2005 through 2019.
   echo.
   echo         The 'detect' call detects which version of Visual Studio
   echo         is installed and defines certain variables identifying
@@ -51,7 +51,7 @@
   echo         The variables which the 'detect' call returns are:
   echo.
   echo              vsname          Visual Studio's "short name"
-  echo                              (e.g. "vs2017", "vs2008", etc)
+  echo                              (e.g. "vs2019", "vs2008", etc)
   echo.
   echo              vsver           Visual Studio's numeric version
   echo                              (e.g. "150", "90", etc)
@@ -62,9 +62,9 @@
   echo              vstarget        The requested target architecture:
   echo                              "x86" if '32', "amd64" if '64'.
   echo.
-  echo              vs2017..vs2005  The Visual Studio version numbers
+  echo              vs2019..vs2005  The Visual Studio version numbers
   echo                              for each supported version of it
-  echo                              (vs2017=150, vs2008=90, etc)
+  echo                              (vs2019=160, vs2017=150, etc)
   echo.
   echo     EXIT STATUS
   echo.
@@ -77,7 +77,7 @@
   echo.
   echo     VERSION
   echo.
-  echo         3.0     (March 3, 2018)
+  echo         3.1     (November 28, 2019)
 
   endlocal
   exit /b 1
@@ -98,9 +98,10 @@
   set "vs2013=120"
   set "vs2015=140"
   set "vs2017=150"
+  set "vs2019=160"
 
-  set "VSNAMES=vs2017 vs2015 vs2013 vs2012 vs2010 vs2008 vs2005"
-
+  set "VSNAMES=vs2019 vs2017 vs2015 vs2013 vs2012 vs2010 vs2008 vs2005"
+  
   set "vsname="
   set "vsver="
   set "vshost="
@@ -206,7 +207,7 @@
 
   pushd .
   echo.
-  
+
   call "%VCVARSDIR%\vcvarsall.bat"  %vstarget%
 
   @if defined TRACEON (@echo on) else (@echo off)
