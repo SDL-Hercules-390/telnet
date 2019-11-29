@@ -304,6 +304,22 @@
 							>
 						</File>
 					</Filter>
+					<Filter
+						Name="vs2019"
+						>
+						<File
+							RelativePath=".\telnet_VS2019.sln"
+							>
+						</File>
+						<File
+							RelativePath=".\telnet_VS2019.vcxproj"
+							>
+						</File>
+						<File
+							RelativePath=".\Telnet_VS2019.vcxproj.filters"
+							>
+						</File>
+					</Filter>
 				</Filter>
 			</Filter>
 			<Filter

@@ -168,6 +168,9 @@
     <None Include="telnet_VS2017.sln" />
     <None Include="telnet_VS2017.vcxproj" />
     <None Include="telnet_VS2017.vcxproj.filters" />
+    <None Include="telnet_VS2019.sln" />
+    <None Include="telnet_VS2019.vcxproj" />
+    <None Include="telnet_VS2019.vcxproj.filters" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="cflags.txt" />

@@ -40,6 +40,9 @@
     <Filter Include="Other Files\build\msvc\VS2017">
       <UniqueIdentifier>{EFA3B253-AEC0-47ce-8A62-829D86C8E4CD}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Other Files\build\msvc\VS2019">
+      <UniqueIdentifier>{64B01A60-5525-4663-A7D9-C5A9A1B15791}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Other Files\build\scripts">
       <UniqueIdentifier>{901A5D2A-90F1-48e0-9617-76D69A6696A5}</UniqueIdentifier>
     </Filter>
@@ -126,6 +129,15 @@
     </None>
     <None Include="telnet_VS2017.vcxproj.filters">
       <Filter>Other Files\build\msvc\VS2017</Filter>
+    </None>
+    <None Include="telnet_VS2019.sln">
+      <Filter>Other Files\build\msvc\VS2019</Filter>
+    </None>
+    <None Include="telnet_VS2019.vcxproj">
+      <Filter>Other Files\build\msvc\VS2019</Filter>
+    </None>
+    <None Include="telnet_VS2019.vcxproj.filters">
+      <Filter>Other Files\build\msvc\VS2019</Filter>
     </None>
     <None Include="build">
       <Filter>Other Files\build\scripts\Linux</Filter>
