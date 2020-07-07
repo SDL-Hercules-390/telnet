@@ -47,7 +47,7 @@ help()
   errmsg ""
   errmsg "        cpu        The machine (CPU) architecture of the target system"
   errmsg "                   if other than x86.  Recognized machine architectures"
-  errmsg "                   are: aarch, arm, mips, ppc, sparc, xscale, s390x, x86"
+  errmsg "                   are: aarch64, arm, mips, ppc, sparc, xscale, s390x, x86"
   errmsg "                   and unknown.  The default if not specified is x86."
   errmsg ""
   errmsg "        arch       The build architecture. Use '32' to build an x86"
@@ -985,7 +985,7 @@ validate_args()
     cpu="x86"
   fi
 
-  if [[ "$cpu" != "aarch"   ]]  && \
+  if [[ "$cpu" != "aarch64" ]]  && \
      [[ "$cpu" != "arm"     ]]  && \
      [[ "$cpu" != "mips"    ]]  && \
      [[ "$cpu" != "ppc"     ]]  && \
@@ -1005,6 +1005,19 @@ validate_args()
   #  Validate arg sanity
 
   #  Check for conflicting options, etc...
+
+# WRL 2020-07-07
+# WRL We cannot build a 32-bit aarch64, nor a 64-bit arm
+  trace "Debug: checking for incorrect arm/aarch64 bitness"
+  if [[ "$cpu" == "arm" ]] && \
+     [[ "$arch" == "64" ]]; then
+    errmsg "ERROR: arm builds are 32-bit only."
+  fi
+
+  if [[ "$cpu" == "aarch64" ]] && \
+     [[ "$arch" == "32" ]]; then
+    errmsg "ERROR: aarch64 builds are 64-bit only."
+  fi
 
   if [[ -n $install ]] && [[ -n $uninstall ]]; then
     errmsg "ERROR: Cannot specify both install and uninstall."
