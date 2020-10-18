@@ -7,6 +7,17 @@ cmake_minimum_required( VERSION 3.2 )
 cmake_policy( SET CMP0048 NEW )
 
 #------------------------------------------------------------------------------
+#   Define the project
+#------------------------------------------------------------------------------
+
+set( EXTPKG_NAME  "telnet"                                     )
+set( EXTPKG_VERS  "1.0.0"                                      )
+set( EXTPKG_DESC  "Simple RFC-compliant TELNET implementation" )
+
+project( ${EXTPKG_NAME} VERSION ${EXTPKG_VERS} LANGUAGES C )
+set( PROJECT_DESCRIPTION "${EXTPKG_DESC}" CACHE PATH "Project description" FORCE )
+
+#------------------------------------------------------------------------------
 #   Load some handy CMake modules
 #------------------------------------------------------------------------------
 
@@ -27,13 +38,6 @@ endif()
 
 include( ParseBinaryDir )
 ParseBinaryDir()
-
-
-#------------------------------------------------------------------------------
-#   Define the project
-#------------------------------------------------------------------------------
-
-include( project.txt )
 
 
 #------------------------------------------------------------------------------
