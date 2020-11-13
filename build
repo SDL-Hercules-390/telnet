@@ -47,8 +47,9 @@ help()
   errmsg ""
   errmsg "        cpu        The machine (CPU) architecture of the target system"
   errmsg "                   if other than x86.  Recognized machine architectures"
-  errmsg "                   are: aarch64, arm, mips, ppc, sparc, xscale, s390x, x86"
-  errmsg "                   and unknown.  The default if not specified is x86."
+  errmsg "                   are: aarch64, arm, i686, mips, ppc, s390x, sparc,"
+  errmsg "                   x86, xscale, and unknown."
+  errmsg "                   The default if not specified is x86."
   errmsg ""
   errmsg "        arch       The build architecture. Use '32' to build an x86"
   errmsg "                   32-bit version of the package. Use '64' to build"
@@ -987,27 +988,25 @@ validate_args()
 
   if [[ "$cpu" != "aarch64" ]]  && \
      [[ "$cpu" != "arm"     ]]  && \
+     [[ "$cpu" != "i686"    ]]  && \
      [[ "$cpu" != "mips"    ]]  && \
      [[ "$cpu" != "ppc"     ]]  && \
-     [[ "$cpu" != "sparc"   ]]  && \
-     [[ "$cpu" != "xscale"  ]]  && \
-     [[ "$cpu" != "x86"     ]]  && \
      [[ "$cpu" != "s390x"   ]]  && \
+     [[ "$cpu" != "sparc"   ]]  && \
+     [[ "$cpu" != "x86"     ]]  && \
+     [[ "$cpu" != "xscale"  ]]  && \
      [[ "$cpu" != "unknown" ]]; then
     errmsg "ERROR: Invalid machine cpu \"$cpu\""
   fi
 
-  if [[ "$cpu" == "x86" ]]; then
-    cpu=""
+  # We do not try a 64-bit build for i686
+  trace "Debug: checking for 64-bit i686"
+  if [[ "$cpu" == "i686" ]] && \
+     [[ "$arch" == "64" ]]; then
+    errmsg "ERROR: i686 builds are intended to be 32-bit only."
   fi
 
-  #----------------------------------------------------------------------------
-  #  Validate arg sanity
-
-  #  Check for conflicting options, etc...
-
-# WRL 2020-07-07
-# WRL We cannot build a 32-bit aarch64, nor a 64-bit arm
+  # We cannot build a 32-bit aarch64, nor a 64-bit arm
   trace "Debug: checking for incorrect arm/aarch64 bitness"
   if [[ "$cpu" == "arm" ]] && \
      [[ "$arch" == "64" ]]; then
@@ -1018,6 +1017,16 @@ validate_args()
      [[ "$arch" == "32" ]]; then
     errmsg "ERROR: aarch64 builds are 64-bit only."
   fi
+
+  if [[ "$cpu" == "x86"  ]] || \
+     [[ "$cpu" == "i686" ]]; then
+    cpu=""
+  fi
+
+  #----------------------------------------------------------------------------
+  #  Validate arg sanity
+
+  #  Check for conflicting options, etc...
 
   if [[ -n $install ]] && [[ -n $uninstall ]]; then
     errmsg "ERROR: Cannot specify both install and uninstall."
