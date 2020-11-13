@@ -177,7 +177,6 @@
     <Text Include="extra.txt" />
     <Text Include="headers.txt" />
     <Text Include="includes.txt" />
-    <Text Include="project.txt" />
     <Text Include="sources.txt" />
     <Text Include="targetver.txt" />
     <Text Include="CMakeLists.txt" />

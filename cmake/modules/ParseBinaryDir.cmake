@@ -40,12 +40,6 @@ Remove the 'CMakeCache.txt' file and the entire 'CMakeFiles' directory and try a
     endif()
 
     #--------------------------------------------------------------------------
-    #   Enable C/C++ language
-    #--------------------------------------------------------------------------
-    
-    enable_language( C CXX )
-
-    #--------------------------------------------------------------------------
     #   Check if this is a BIG ENDIAN or LITTLE ENDIAN build system.
     #   Some packages needs to know this.
     #--------------------------------------------------------------------------
