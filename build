@@ -988,6 +988,7 @@ validate_args()
 
   if [[ "$cpu" != "aarch64" ]]  && \
      [[ "$cpu" != "arm"     ]]  && \
+     [[ "$cpu" != "e2k"     ]]  && \
      [[ "$cpu" != "i686"    ]]  && \
      [[ "$cpu" != "mips"    ]]  && \
      [[ "$cpu" != "ppc"     ]]  && \
@@ -1016,6 +1017,11 @@ validate_args()
   if [[ "$cpu" == "aarch64" ]] && \
      [[ "$arch" == "32" ]]; then
     errmsg "ERROR: aarch64 builds are 64-bit only."
+  fi
+
+  if [[ "$cpu" == "e2k" ]] && \
+     [[ "$arch" == "32" ]]; then
+    errmsg "ERROR: e2k builds are 64-bit only."
   fi
 
   if [[ "$cpu" == "x86"  ]] || \
