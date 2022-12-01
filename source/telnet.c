@@ -1365,8 +1365,8 @@ void telnet_send_one_shot
             k = i + 1;
 
             /* Copy escape */
-            sendbuf[s]   = TELNET_IAC;
-            sendbuf[s+1] = TELNET_IAC;
+            sendbuf[s]   = (char) TELNET_IAC;
+            sendbuf[s+1] = (char) TELNET_IAC;
             s = s + 2;
         }
     }
@@ -1379,11 +1379,11 @@ void telnet_send_one_shot
     }
 
     /* Append IAC+EOR */
-    sendbuf[s]   = TELNET_IAC;
-    sendbuf[s+1] = TELNET_EOR;
+    sendbuf[s]   = (char) TELNET_IAC;
+    sendbuf[s+1] = (char) TELNET_EOR;
 
     /* Send everything */
-    _send( telnet, sendbuf, s + 2 );
+    _send( telnet, (const BYTE*) sendbuf, s + 2 );
 }
 
 /*-------------------------------------------------------------------*/
